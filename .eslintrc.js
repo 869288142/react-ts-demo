@@ -18,6 +18,7 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:jest/recommended',
         'prettier',
         'prettier/@typescript-eslint',
     ],
@@ -296,5 +297,5 @@ module.exports = {
         "prefer-template": ['error'],
         'prettier/prettier': 'warn'
     },
-    "plugins": ['@typescript-eslint', 'prettier'],
+    "plugins": ['@typescript-eslint', 'jest', 'prettier'],
 }
