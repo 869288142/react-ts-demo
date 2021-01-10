@@ -1,34 +1,34 @@
-import React from 'react';
-import { Provider } from "react-redux";
-import Board from './Board'
-import store from './store'
-import './App.css';
+// eslint-disable-next-line no-use-before-define
+import React from 'react'
+import GoodsItem from './components/GoodsItem/GoodsItem'
 
+import GoodsUsecases from './domain/goods/usecases/get-all-goods.usecase'
 
-
-
-
-
-
-class Game extends React.Component {
-  render() {
+class App extends React.Component {
+  state = {
+    goodsList: [], // 商品列表
+  }
+  componentDidMount(): void {
+    // 获取商品列表
+    GoodsUsecases.getGoodsList().then((list) => {
+      this.setState({
+        goodsList: list,
+      })
+    })
+  }
+  render(): JSX.Element {
+    const { goodsList } = this.state
     return (
-      <Provider store={store}>
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
+      <div>
+        <h3>商品列表</h3>
+        <div className="goods-list">
+          {goodsList.map((data) => {
+            return <GoodsItem goods={data} />
+          })}
         </div>
-      </Provider>
-    );
+      </div>
+    )
   }
 }
 
-
-
-
-export default Game;
+export default App

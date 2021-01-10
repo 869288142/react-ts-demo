@@ -1,9 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react'
+import App from './App'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+function max(arr: any): any {
+  return Math.max(...arr)
+}
+
+describe('array/max', () => {
+  const orign = [1, 3, 1]
+  it('array/max-最大值', () => {
+    expect(max(orign)).toBe(3)
+  })
+})
